@@ -3,6 +3,7 @@ $yellow: #C8BB66;
 $brown: #BD9F7B;
 $beige: #DFD3C5;
 $cyan: #358282;
+$desktop: 430px;
 
 $iconBW_URL: "../../../public/Header_images/iconBW.png";
 $iconColor_URL: "../../../public/Header_images/iconColor.png";
@@ -15,13 +16,10 @@ header {
 }
 
 .header {
-  width: 450px;
   margin: 0 auto;
-  text-align: center;
-  font-size: 70px;
+  font-family: "tempus sans itc", cursive;
   color: $cyan;
   background: url($iconBW_URL) no-repeat center right;
-  background-size: 60px 60px;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
@@ -29,4 +27,20 @@ header {
 
 h1:hover {
   background-image: url($iconColor_URL);
+}
+
+@media (min-width: $desktop) {
+  .header {
+    width: 370px;
+    font-size: 70px;
+    background-size: 60px 60px;
+  }
+}
+
+@media (max-width: $desktop) {
+  .header {
+    width: 175px;
+    font-size: 35px;
+    background-size: 30px 30px;
+  }
 }
