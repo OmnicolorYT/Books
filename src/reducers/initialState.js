@@ -9,7 +9,7 @@ const initialState = {
             annotation: "Кликни по 'Добавить книгу', введи всю необходмиую информацию и добавь книгу!" +
                 "Еще можешь пользоваться поиском, сортировкой, а так же редактировать уже существующие книги!",
             state: "have",
-            genre: "manual",
+            genre: "мануал",
             pagesCount: "1"
         }],
         newBook: {
@@ -25,9 +25,15 @@ const initialState = {
         }
     },
     ui: {
-        sort: 'ALL',
+        sort: [{
+            name: "",
+            author: "",
+            state: "",
+            genre: "",
+            sortType: "none",
+            sortField : ""
+        }],
         editId: '',
-        editText: ''
     }
 }
 
