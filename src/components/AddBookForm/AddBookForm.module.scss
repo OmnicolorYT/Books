@@ -1,0 +1,267 @@
+$green: #525A1F;
+$yellow: #C8BB66;
+$brown: #BD9F7B;
+$beige: #DFD3C5;
+$cyan: #358282;
+$red: #e60002;
+$lightRed: #ec979c;
+$borderGray: #646464;
+$outlineGray: #b4b4b4;
+$labelGray: #757575;
+
+
+.modal_wrapper {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+  opacity: 0;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+}
+
+.form_div {
+  z-index: 2;
+  width: 500px;
+  height: 710px;
+  background: $beige;
+  border-radius: 10px;
+  border: 2px solid $cyan;
+}
+
+.visible {
+  opacity: 1;
+  z-index: 3;
+}
+
+
+.form_header {
+  padding: 0 20px;
+  margin: 20px 0 0 0;
+  text-align: center;
+  color: $cyan;
+  font-size: 40px;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.input_field {
+  width: 100%;
+  position: relative;
+}
+
+.text_input {
+  font-size: 20px;
+  width: 440px;
+  height: 20px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: $beige;
+  border: 1px solid $borderGray;
+  border-radius: 5px;
+  resize: none;
+  overflow : auto;
+}
+
+textarea.text_input {
+  height: 70px;
+}
+
+textarea::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 2px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: $brown;
+  border-radius: 5px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.input_field .label {
+  font-size: 20px;
+  color: $labelGray;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 5px;
+  height: 20px;
+  padding: 0 4px;
+  margin: 20px 0;
+  pointer-events: none;
+  transform-origin: 0 0;
+  transition: transform .15s ease-in-out;
+}
+
+.input_field .text_input::-moz-placeholder {
+  color: transparent;
+}
+
+.input_field .text_input::placeholder {
+  color: transparent;
+}
+
+.input_field .text_input:focus {
+  outline: 2px solid $outlineGray;
+}
+
+.input_field .text_input:focus~.label,
+.input_field .text_input:not(:placeholder-shown)~.label {
+  transform: scale(.80) translateY(-25px) translateX(10px);
+  background: $beige;
+  color: $borderGray;
+}
+
+@keyframes error_shake {
+  0% {transform: translateX(-5px)}
+  33% {transform: translateX(5px)}
+  66% {transform: translateX(5px)}
+  100% {transform: translateX(-5px)}
+}
+
+.input_field.error .text_input,
+.state_group.error {
+  border: 1px solid $red;
+  outline: 2px solid $lightRed;
+  -webkit-animation: error_shake .1s 2 alternate;
+  -o-animation: error_shake .1s 2 alternate;
+  animation: error_shake .1s 2 alternate;
+}
+
+.input_field.error .label {
+  -webkit-animation: error_shake .1s 2 alternate;
+  -o-animation: error_shake .1s 2 alternate;
+  animation: error_shake .1s 2 alternate;
+}
+
+.input_field .error_message,
+.state_group .error_message {
+  display: flex;
+  position: absolute;
+  top: -20px;
+  right: 5px;
+  font-size: 16px;
+  color: $red;
+  padding: 0 4px;
+  margin: 20px 0;
+  height: 16px;
+  transform-origin: 0 0;
+  transition: opacity .15s ease-in-out;
+  background: $beige;
+  -webkit-animation: error_shake .1s 2 alternate;
+  -o-animation: error_shake .1s 2 alternate;
+  animation: error_shake .1s 2 alternate;
+}
+
+.state_group .error_message {
+  top: -30px;
+}
+
+.state_group {
+  border: 1px solid $borderGray;
+  border-radius: 5px;
+  width: 460px;
+  padding: 0;
+  margin: 10px 0;
+  height: 40px;
+  position: relative;
+  display: flex;
+}
+
+.state_group .label {
+  font-size: 16px;
+  color: $labelGray;
+  display: flex;
+  position: absolute;
+  top: -25px;
+  left: 10px;
+  height: 16px;
+  padding: 0 4px;
+  margin: 16px 0;
+  border-radius: 5px;
+  pointer-events: none;
+  transform-origin: 0 0;
+  transition: transform .2s ease-in-out;
+  background: $beige;
+}
+
+.state_group .radio_label {
+  font-size: 20px;
+  width: 33vw;
+  height: 20px;
+  padding: 10px;
+  text-align: center;
+  -moz-transition: all 0.1s ease-out;
+  -o-transition: all 0.1s ease-out;
+  -webkit-transition: all 0.1s ease-out;
+}
+
+.state_group .radio_label:nth-child(2) {
+  border-radius: 6px 0 0 6px;
+  border-right: 1px solid $borderGray;
+}
+.state_group .radio_label:nth-child(4) {
+  border-radius: 0 5px 5px 0;
+  border-left: 1px solid $borderGray;
+}
+
+.state_group .radio_input {
+  display: none;
+}
+
+.radio_label:hover {
+  background: #D0C2AE;
+}
+
+.radio_label.checked {
+  background: $brown;
+}
+
+.state_group:hover {
+  outline: 2px solid $outlineGray;
+}
+
+.buttons {
+  margin-top: 10px;
+  width: 460px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttons input {
+  font-size: 20px;
+  height: 44px;
+  width: 120px;
+  padding: 10px;
+  background: $beige;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid $borderGray;
+  -moz-transition: background-color 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out;
+  -webkit-transition: background-color 0.3s ease-in-out;
+}
+
+.buttons input:hover {
+  outline: 3px solid $outlineGray;
+  background: #D0C2AE;
+}
+
+.buttons input:last-child {
+  margin-left: 10px;
+}
