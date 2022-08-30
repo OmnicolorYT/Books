@@ -7,7 +7,6 @@ function BookCard(props) {
     const book = props.book
     const dispatch = useDispatch()
     const cx = classNames.bind(styles)
-    console.log(book)
 
     return(
         <div className={styles.book_card}>
