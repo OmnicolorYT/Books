@@ -217,27 +217,27 @@ input::-webkit-inner-spin-button {
   -moz-transition: all 0.1s ease-out;
   -o-transition: all 0.1s ease-out;
   -webkit-transition: all 0.1s ease-out;
+
+  &:hover {
+    background: #D0C2AE;
+  }
+
+  &.checked {
+    background: $brown;
+  }
+
+  &:nth-child(2) {
+    border-radius: 6px 0 0 6px;
+    border-right: 1px solid $borderGray;
+  }
+  &:nth-child(4) {
+    border-radius: 0 5px 5px 0;
+    border-left: 1px solid $borderGray;
+  }
 }
 
-.stateGroup .radioLabel:nth-child(2) {
-  border-radius: 6px 0 0 6px;
-  border-right: 1px solid $borderGray;
-}
-.stateGroup .radioLabel:nth-child(4) {
-  border-radius: 0 5px 5px 0;
-  border-left: 1px solid $borderGray;
-}
-
-.stateGroup .radio_input {
+.stateGroup .radioInput {
   display: none;
-}
-
-.radioLabel:hover {
-  background: #D0C2AE;
-}
-
-.radioLabel.checked {
-  background: $brown;
 }
 
 .stateGroup:hover {

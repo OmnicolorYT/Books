@@ -5,7 +5,6 @@ import {useDispatch, useSelector} from 'react-redux'
 import {closeForm} from "../../store/reducers/modalFormReducers.slice";
 import {addBook} from "../../store/reducers/booksReducers.slice"
 import classNames from "classnames/bind";
-import Input from "../Input/Input";
 
 const date = new Date()
 const now = date.getFullYear()
@@ -47,7 +46,7 @@ function AddBookForm() {
             <div className={styles.formDiv}>
                 <h1 className={styles.formHeader}>Добавление книги</h1>
                 <form onSubmit={handleSubmit(onSubmit) } className={styles.form}>
-                    <div className={cx(styles.inputField, {error: errors?.bookName})}>
+                    <div className={cx(styles.inputField, {error: errors?.name})}>
                         <input className={styles.textInput}
                                {...register('name', {
                                    required: 'Поле обязательно для заполнения'
@@ -55,19 +54,9 @@ function AddBookForm() {
                                placeholder={'Название книги'}
                         />
                         <label className={styles.label} htmlFor={'name'}>Название книги</label>
-                        {errors?.bookName && <p className={styles.errorMessage}>{errors.bookName.message}</p>}
+                        {errors?.name && <p className={styles.errorMessage}>{errors.name.message}</p>}
                     </div>
-                    <Input
-                        name={'name'}
-                        divClass={cx(styles.inputField, {error: errors?.bookName})}
-                        inputClass={styles.textInput}
-                        ref={register('asd', {
-                            required: 'Поле обязательно для заполнения'
-                        })}
-                        placeholder={'Название книги'}
-                        errorMessage={errors?.bookName && <p className={styles.errorMessage}>{errors.bookName.message}</p>}
-                    />
-                    <div className={cx(styles.inputField, {error: errors?.bookAuthor})}>
+                    <div className={cx(styles.inputField, {error: errors?.author})}>
                         <input className={styles.textInput}
                                {...register('author', {
                                    required: 'Поле обязательно для заполнения'
@@ -75,7 +64,7 @@ function AddBookForm() {
                                placeholder={'Автор'}
                         />
                         <label className={styles.label} htmlFor={'author'}>Автор</label>
-                        {errors?.bookAuthor && <p className={styles.errorMessage}>{errors.bookAuthor.message}</p>}
+                        {errors?.author && <p className={styles.errorMessage}>{errors.author.message}</p>}
                     </div>
                     <div className={cx(styles.inputField, {error: errors?.publishingYear})}>
                         <input className={styles.textInput}
@@ -161,16 +150,16 @@ function AddBookForm() {
                     </div>
                     <div className={cx(styles.inputField, {error: errors?.pagesCount})}>
                         <input
-                                className={styles.textInput}
-                                {...register('pagesCount', {
-                                    required: 'Поле обязательно для заполнения',
-                                    max: {
-                                        value: 9999,
-                                        message: 'Значение не больше 9999'
-                                    }
-                                })}
-                                type={"number"}
-                                placeholder={'Количество страниц'}
+                            className={styles.textInput}
+                            {...register('pagesCount', {
+                                required: 'Поле обязательно для заполнения',
+                                max: {
+                                    value: 9999,
+                                    message: 'Значение не больше 9999'
+                                }
+                            })}
+                            type={"number"}
+                            placeholder={'Количество страниц'}
                         />
                         <label className={styles.label} htmlFor={'pagesCount'}>Количество страниц</label>
                         {errors?.pagesCount && <p className={styles.errorMessage}>{errors.pagesCount.message}</p>}

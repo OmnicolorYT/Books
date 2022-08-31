@@ -20,7 +20,6 @@ export const booksSlice = createSlice({
     initialState,
     reducers: {
         addBook: (state, action) => {
-            console.log(action.payload)
             let id
             if (state.booksList.length !== 0) {
                 id = state.booksList[state.booksList.length - 1].id + 1
@@ -28,7 +27,6 @@ export const booksSlice = createSlice({
                 id = 0
             }
             state.booksList.push({...action.payload, id: id})
-            console.log(state.booksList)
         }
     }
 })
