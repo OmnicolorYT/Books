@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux'
 import {openForm} from "../../store/reducers/modalFormReducers.slice";
 
 
-function AddBookButton() {
+const AddBookButton = () => {
     const dispatch = useDispatch()
 
     const openFormHandler = () => {

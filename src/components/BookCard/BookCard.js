@@ -24,7 +24,7 @@ const annotationStr = (str) => {
     }
 }
 
-function BookCard(props) {
+const BookCard = (props) => {
     const book = props.book
     const cx = classNames.bind(styles)
 

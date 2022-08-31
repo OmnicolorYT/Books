@@ -4,9 +4,8 @@ import BooksSection from "../BooksSection/BooksSection";
 
 import { useSelector } from 'react-redux'
 import AddBookForm from "../AddBookForm/AddBookForm";
-import BookCard from "../BookCard/BookCard";
 
-function Main() {
+const Main = () => {
     const modalForm = useSelector(state => state.modalFormReducer)
 
     return(

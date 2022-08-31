@@ -9,7 +9,7 @@ import classNames from "classnames/bind";
 const date = new Date()
 const now = date.getFullYear()
 
-function AddBookForm() {
+const AddBookForm = () => {
     const {
         register,
         formState: {
