@@ -8,17 +8,10 @@ import BookCard from "../BookCard/BookCard";
 
 function Main() {
     const modalForm = useSelector(state => state.modalFormReducer)
-    const books = useSelector(state => state.booksReducer.booksList)
-    const booksList = books.map((book) => {
-        return(
-            <BookCard book={book} key={book.id} />
-        )
-    })
 
     return(
         <div className={styles.main}>
             <BooksSection />
-            {booksList}
             {modalForm?.opened && <AddBookForm />}
         </div>
     )

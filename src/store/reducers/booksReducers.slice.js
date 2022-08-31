@@ -8,7 +8,7 @@ const initialState = {
         publishingYear: "2022",
         publishing: "S&P",
         annotation: "Кликни по 'Добавить книгу', введи всю необходмиую информацию и добавь книгу!" +
-            "Еще можешь пользоваться поиском, сортировкой, а так же редактировать уже существующие книги!",
+            " Еще можешь пользоваться поиском, сортировкой, а так же редактировать уже существующие книги!",
         state: "have",
         genre: "manual",
         pagesCount: "0"
@@ -19,14 +19,22 @@ export const booksSlice = createSlice({
     name: 'books',
     initialState,
     reducers: {
-        asd: (state, action) => {
-            state.booksList.id = action
+        addBook: (state, action) => {
+            console.log(action.payload)
+            let id
+            if (state.booksList.length !== 0) {
+                id = state.booksList[state.booksList.length - 1].id + 1
+            } else {
+                id = 0
+            }
+            state.booksList.push({...action.payload, id: id})
+            console.log(state.booksList)
         }
     }
 })
 
 export const {
-    asd
+    addBook
 } = booksSlice.actions;
 
 export const booksReducer = booksSlice.reducer;
