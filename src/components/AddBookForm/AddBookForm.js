@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {closeForm} from "../../store/reducers/modalFormReducers.slice";
 import {addBook} from "../../store/reducers/booksReducers.slice"
 import classNames from "classnames/bind";
+import Input from "../Input/Input";
 
 const date = new Date()
 const now = date.getFullYear()
@@ -16,14 +17,13 @@ function AddBookForm() {
             errors
         },
         handleSubmit,
-        reset,
+        reset
     } = useForm({
         mode: "onSubmit"
     })
 
     const dispatch = useDispatch()
     const cx = classNames.bind(styles)
-    const booksState = useSelector(state => state.booksReducer)
     const opened = useSelector(state => state.modalFormReducer.opened)
 
     const [state, setState] = useState()
@@ -43,32 +43,42 @@ function AddBookForm() {
     }
 
     return(
-        <div className={cx({visible: opened}, styles.modal_wrapper)}>
-            <div className={styles.form_div}>
-                <h1 className={styles.form_header}>Добавление книги</h1>
+        <div className={cx({visible: opened}, styles.modalWrapper)}>
+            <div className={styles.formDiv}>
+                <h1 className={styles.formHeader}>Добавление книги</h1>
                 <form onSubmit={handleSubmit(onSubmit) } className={styles.form}>
-                    <div className={cx(styles.input_field, {error: errors?.bookName})}>
-                        <input className={styles.text_input}
+                    <div className={cx(styles.inputField, {error: errors?.bookName})}>
+                        <input className={styles.textInput}
                                {...register('name', {
                                    required: 'Поле обязательно для заполнения'
                                })}
                                placeholder={'Название книги'}
                         />
-                        <label className={styles.label} htmlFor={'bookName'}>Название книги</label>
-                        {errors?.bookName && <p className={styles.error_message}>{errors.bookName.message}</p>}
+                        <label className={styles.label} htmlFor={'name'}>Название книги</label>
+                        {errors?.bookName && <p className={styles.errorMessage}>{errors.bookName.message}</p>}
                     </div>
-                    <div className={cx(styles.input_field, {error: errors?.bookAuthor})}>
-                        <input className={styles.text_input}
+                    <Input
+                        name={'name'}
+                        divClass={cx(styles.inputField, {error: errors?.bookName})}
+                        inputClass={styles.textInput}
+                        ref={register('asd', {
+                            required: 'Поле обязательно для заполнения'
+                        })}
+                        placeholder={'Название книги'}
+                        errorMessage={errors?.bookName && <p className={styles.errorMessage}>{errors.bookName.message}</p>}
+                    />
+                    <div className={cx(styles.inputField, {error: errors?.bookAuthor})}>
+                        <input className={styles.textInput}
                                {...register('author', {
                                    required: 'Поле обязательно для заполнения'
                                })}
                                placeholder={'Автор'}
                         />
-                        <label className={styles.label} htmlFor={'bookAuthor'}>Автор</label>
-                        {errors?.bookAuthor && <p className={styles.error_message}>{errors.bookAuthor.message}</p>}
+                        <label className={styles.label} htmlFor={'author'}>Автор</label>
+                        {errors?.bookAuthor && <p className={styles.errorMessage}>{errors.bookAuthor.message}</p>}
                     </div>
-                    <div className={cx(styles.input_field, {error: errors?.publishingYear})}>
-                        <input className={styles.text_input}
+                    <div className={cx(styles.inputField, {error: errors?.publishingYear})}>
+                        <input className={styles.textInput}
                                {...register('publishingYear', {
                                    required: 'Поле обязательно для заполнения',
                                    max: {
@@ -80,29 +90,29 @@ function AddBookForm() {
                                placeholder={'Год издания'}
                         />
                         <label className={styles.label} htmlFor={'publishingYear'}>Год издания</label>
-                        {errors?.publishingYear && <p className={styles.error_message}>{errors.publishingYear.message}</p>}
+                        {errors?.publishingYear && <p className={styles.errorMessage}>{errors.publishingYear.message}</p>}
                     </div>
-                    <div className={cx(styles.input_field, {error: errors?.publishing})}>
-                        <input className={styles.text_input}
+                    <div className={cx(styles.inputField, {error: errors?.publishing})}>
+                        <input className={styles.textInput}
                                {...register('publishing')}
                                placeholder={'Издательство'}
                         />
                         <label className={styles.label} htmlFor={'publishing'}>Издательство</label>
-                        {errors?.publishing && <p className={styles.error_message}>{errors.publishing.message}</p>}
+                        {errors?.publishing && <p className={styles.errorMessage}>{errors.publishing.message}</p>}
                     </div>
-                    <div className={cx(styles.input_field, {error: errors?.annotation})}>
-                        <textarea className={styles.text_input}
+                    <div className={cx(styles.inputField, {error: errors?.annotation})}>
+                        <textarea className={styles.textInput}
                                   {...register('annotation')}
                                   placeholder={'Аннотация'}
                         >
                         </textarea>
                         <label className={styles.label} htmlFor={'annotation'}>Аннотация</label>
-                        {errors?.annotation && <p className={styles.error_message}>{errors.annotation.message}</p>}
+                        {errors?.annotation && <p className={styles.errorMessage}>{errors.annotation.message}</p>}
                     </div>
-                    <div className={cx(styles.state_group, {error: errors?.state})}>
+                    <div className={cx(styles.stateGroup, {error: errors?.state})}>
                         <p className={styles.label}>Состояние</p>
-                        <label className={cx(styles.radio_label, {checked: state === 'want'})}>
-                            <input className={styles.radio_input}
+                        <label className={cx(styles.radioLabel, {checked: state === 'want'})}>
+                            <input className={styles.radioInput}
                                    {...register('state', {
                                        required: 'Необходимо выбрать один из вариантов',
                                        onChange: (e) => {onChangeHandler(e)}
@@ -113,8 +123,8 @@ function AddBookForm() {
                             />
                             В желаемом
                         </label>
-                        <label className={cx(styles.radio_label, {checked: state === 'have'})}>
-                            <input className={styles.radio_input}
+                        <label className={cx(styles.radioLabel, {checked: state === 'have'})}>
+                            <input className={styles.radioInput}
                                    {...register('state', {
                                        required: 'Необходимо выбрать один из вариантов',
                                        onChange: (e) => {onChangeHandler(e)}
@@ -125,8 +135,8 @@ function AddBookForm() {
                             />
                             Есть
                         </label>
-                        <label className={cx(styles.radio_label, {checked: state === 'read'})}>
-                            <input className={styles.radio_input} {
+                        <label className={cx(styles.radioLabel, {checked: state === 'read'})}>
+                            <input className={styles.radioInput} {
                                 ...register('state', {
                                     required: 'Необходимо выбрать один из вариантов',
                                     onChange: (e) => {onChangeHandler(e)}
@@ -137,21 +147,21 @@ function AddBookForm() {
                             />
                             Прочтена
                         </label>
-                        {errors.state && <p className={styles.error_message}>{errors.state.message}</p>}
+                        {errors.state && <p className={styles.errorMessage}>{errors.state.message}</p>}
                     </div>
-                    <div className={cx(styles.input_field, {error: errors?.genre})}>
-                        <input className={styles.text_input}
+                    <div className={cx(styles.inputField, {error: errors?.genre})}>
+                        <input className={styles.textInput}
                                {...register('genre', {
                                    required: 'Поле обязательно для заполнения'
                                })}
                                placeholder={'Жанр'}
                         />
                         <label className={styles.label} htmlFor={'genre'}>Жанр</label>
-                        {errors?.genre && <p className={styles.error_message}>{errors.genre.message}</p>}
+                        {errors?.genre && <p className={styles.errorMessage}>{errors.genre.message}</p>}
                     </div>
-                    <div className={cx(styles.input_field, {error: errors?.pagesCount})}>
+                    <div className={cx(styles.inputField, {error: errors?.pagesCount})}>
                         <input
-                                className={styles.text_input}
+                                className={styles.textInput}
                                 {...register('pagesCount', {
                                     required: 'Поле обязательно для заполнения',
                                     max: {
@@ -163,7 +173,7 @@ function AddBookForm() {
                                 placeholder={'Количество страниц'}
                         />
                         <label className={styles.label} htmlFor={'pagesCount'}>Количество страниц</label>
-                        {errors?.pagesCount && <p className={styles.error_message}>{errors.pagesCount.message}</p>}
+                        {errors?.pagesCount && <p className={styles.errorMessage}>{errors.pagesCount.message}</p>}
                     </div>
                     <div className={styles.buttons}>
                         <input type={"submit"}/>

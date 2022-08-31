@@ -8,14 +8,14 @@ export const uiSlice = createSlice({
     name: 'ui',
     initialState,
     reducers: {
-        asd: (state, action) => {
+        plug: (state, action) => {
             state.sort = action
-        }
+        } //затычка чтобы ничего не сломалось
     }
 })
 
 export const {
-    asd
+    plug
 } = uiSlice.actions
 
 export const uiReducer = uiSlice.reducer

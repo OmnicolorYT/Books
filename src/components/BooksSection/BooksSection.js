@@ -12,7 +12,7 @@ function BooksSection() {
         )
     })
     return(
-        <div className={styles.books_section}>
+        <div className={styles.booksSection}>
             <AddBookButton />
             {booksList}
         </div>

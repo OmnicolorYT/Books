@@ -9,8 +9,18 @@ $borderGray: #646464;
 $outlineGray: #b4b4b4;
 $labelGray: #757575;
 
+//animation for error shake
 
-.modal_wrapper {
+@keyframes errorShake {
+  0% {transform: translateX(-5px)}
+  33% {transform: translateX(5px)}
+  66% {transform: translateX(5px)}
+  100% {transform: translateX(-5px)}
+}
+
+//styles for modal window
+
+.modalWrapper {
   position: fixed;
   display: flex;
   top: 0;
@@ -27,7 +37,7 @@ $labelGray: #757575;
   -webkit-transition: all 0.3s ease;
 }
 
-.form_div {
+.formDiv {
   z-index: 2;
   width: 500px;
   height: 710px;
@@ -41,8 +51,9 @@ $labelGray: #757575;
   z-index: 3;
 }
 
+//styles for form
 
-.form_header {
+.formHeader {
   padding: 0 20px;
   margin: 20px 0 0 0;
   text-align: center;
@@ -56,12 +67,14 @@ $labelGray: #757575;
   padding: 20px;
 }
 
-.input_field {
+//styles for inputs
+
+.inputField {
   width: 100%;
   position: relative;
 }
 
-.text_input {
+.textInput {
   font-size: 20px;
   width: 440px;
   height: 20px;
@@ -74,7 +87,7 @@ $labelGray: #757575;
   overflow : auto;
 }
 
-textarea.text_input {
+textarea.textInput {
   height: 70px;
 }
 
@@ -93,7 +106,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-.input_field .label {
+.inputField .label {
   font-size: 20px;
   color: $labelGray;
   display: flex;
@@ -108,49 +121,42 @@ input::-webkit-inner-spin-button {
   transition: transform .15s ease-in-out;
 }
 
-.input_field .text_input::-moz-placeholder {
+.inputField .textInput::-moz-placeholder {
   color: transparent;
 }
 
-.input_field .text_input::placeholder {
+.inputField .textInput::placeholder {
   color: transparent;
 }
 
-.input_field .text_input:focus {
+.inputField .textInput:focus {
   outline: 2px solid $outlineGray;
 }
 
-.input_field .text_input:focus~.label,
-.input_field .text_input:not(:placeholder-shown)~.label {
+.inputField .textInput:focus~.label,
+.inputField .textInput:not(:placeholder-shown)~.label {
   transform: scale(.80) translateY(-25px) translateX(10px);
   background: $beige;
   color: $borderGray;
 }
 
-@keyframes error_shake {
-  0% {transform: translateX(-5px)}
-  33% {transform: translateX(5px)}
-  66% {transform: translateX(5px)}
-  100% {transform: translateX(-5px)}
-}
-
-.input_field.error .text_input,
-.state_group.error {
+.inputField.error .textInput,
+.stateGroup.error {
   border: 1px solid $red;
   outline: 2px solid $lightRed;
-  -webkit-animation: error_shake .1s 2 alternate;
-  -o-animation: error_shake .1s 2 alternate;
-  animation: error_shake .1s 2 alternate;
+  -webkit-animation: errorShake .1s 2 alternate;
+  -o-animation: errorShake .1s 2 alternate;
+  animation: errorShake .1s 2 alternate;
 }
 
-.input_field.error .label {
-  -webkit-animation: error_shake .1s 2 alternate;
-  -o-animation: error_shake .1s 2 alternate;
-  animation: error_shake .1s 2 alternate;
+.inputField.error .label {
+  -webkit-animation: errorShake .1s 2 alternate;
+  -o-animation: errorShake .1s 2 alternate;
+  animation: errorShake .1s 2 alternate;
 }
 
-.input_field .error_message,
-.state_group .error_message {
+.inputField .errorMessage,
+.stateGroup .errorMessage {
   display: flex;
   position: absolute;
   top: -20px;
@@ -163,16 +169,18 @@ input::-webkit-inner-spin-button {
   transform-origin: 0 0;
   transition: opacity .15s ease-in-out;
   background: $beige;
-  -webkit-animation: error_shake .1s 2 alternate;
-  -o-animation: error_shake .1s 2 alternate;
-  animation: error_shake .1s 2 alternate;
+  -webkit-animation: errorShake .1s 2 alternate;
+  -o-animation: errorShake .1s 2 alternate;
+  animation: errorShake .1s 2 alternate;
 }
 
-.state_group .error_message {
+.stateGroup .errorMessage {
   top: -30px;
 }
 
-.state_group {
+//styles for radio-buttons
+
+.stateGroup {
   border: 1px solid $borderGray;
   border-radius: 5px;
   width: 460px;
@@ -183,7 +191,7 @@ input::-webkit-inner-spin-button {
   display: flex;
 }
 
-.state_group .label {
+.stateGroup .label {
   font-size: 16px;
   color: $labelGray;
   display: flex;
@@ -200,7 +208,7 @@ input::-webkit-inner-spin-button {
   background: $beige;
 }
 
-.state_group .radio_label {
+.stateGroup .radioLabel {
   font-size: 20px;
   width: 33vw;
   height: 20px;
@@ -211,30 +219,32 @@ input::-webkit-inner-spin-button {
   -webkit-transition: all 0.1s ease-out;
 }
 
-.state_group .radio_label:nth-child(2) {
+.stateGroup .radioLabel:nth-child(2) {
   border-radius: 6px 0 0 6px;
   border-right: 1px solid $borderGray;
 }
-.state_group .radio_label:nth-child(4) {
+.stateGroup .radioLabel:nth-child(4) {
   border-radius: 0 5px 5px 0;
   border-left: 1px solid $borderGray;
 }
 
-.state_group .radio_input {
+.stateGroup .radio_input {
   display: none;
 }
 
-.radio_label:hover {
+.radioLabel:hover {
   background: #D0C2AE;
 }
 
-.radio_label.checked {
+.radioLabel.checked {
   background: $brown;
 }
 
-.state_group:hover {
+.stateGroup:hover {
   outline: 2px solid $outlineGray;
 }
+
+//styles for buttons
 
 .buttons {
   margin-top: 10px;

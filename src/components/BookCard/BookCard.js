@@ -29,10 +29,15 @@ function BookCard(props) {
     const cx = classNames.bind(styles)
 
     return(
-        <div className={cx(styles.book_card, {have: true}, {want: false}, {read: false})}>
+        <div className={cx(
+                styles.bookCard,
+                {[styles.have]: book.state === 'have'},
+                {[styles.want]: book.state === 'want'},
+                {[styles.read]: book.state === 'read'}
+        )}>
             <h2 className={cx(styles.name)}>{shortcutStr(book.name, max_name_length)}</h2>
             <p className={styles.author}>{shortcutStr(book.author, max_author_length)}</p>
-            <p className={styles.publishing_year}>{book.publishingYear}</p>
+            <p className={styles.publishingYear}>{book.publishingYear}</p>
             <p className={styles.publishing}>{shortcutStr(book.publishing, max_publishing_length)}</p>
             <p className={styles.annotation}>{annotationStr(book.annotation)}</p>
             <p className={styles.pages_count}>Страниц: {book.pagesCount}</p>

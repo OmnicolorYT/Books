@@ -9,8 +9,7 @@ $borderGray: #646464;
 $outlineGray: #b4b4b4;
 $labelGray: #757575;
 
-.book_card {
-  border: 1px solid $cyan;
+.bookCard {
   border-radius: 5px;
   width: 300px;
   height: 150px;
@@ -25,53 +24,73 @@ $labelGray: #757575;
   grid-template-columns: 60px auto 90px;
   grid-template-rows: 27px 20px auto 20px;
   gap: 5px;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
 
-  p {
-    font-size: 14px;
-    margin: 0;
-    word-wrap: break-word;
+  &:hover {
+    transform: scale(1.05);
   }
+}
 
-  .name {
-    font-size: 18px;
-    width: 100%;
-    margin: 5px 0;
-    grid-area: name;
-  }
+.want {
+  border: 2px solid $brown;
 
-  .author {
-    margin: 0;
-    grid-area: author;
+  &:hover {
+    box-shadow: 0 0 15px 5px $brown;
   }
+}
 
-  .publishing {
-    grid-area: publishing;
-    margin: 0;
-  }
+.have {
+  border: 2px solid $yellow;
 
-  .publishing_year {
-    grid-area: year;
-    margin: 0;
+  &:hover {
+    box-shadow: 0 0 15px 5px $yellow;
   }
+}
 
-  .annotation {
-    grid-area: annotation;
-  }
+.read {
+  border: 2px solid $green;
 
-  .pages_count {
-    grid-area: pages;
-    margin: 0;
+  &:hover {
+    box-shadow: 0 0 15px 5px $green;
   }
+}
 
-  .want {
-    border: 1px solid $brown;
-  }
 
-  .have {
-    border: 1px solid $yellow;
-  }
+p {
+  font-size: 14px;
+  margin: 0;
+  word-wrap: break-word;
+}
 
-  .read {
-    border: 1px solid $green;
-  }
+.name {
+  font-size: 18px;
+  width: 100%;
+  margin: 5px 0;
+  grid-area: name;
+}
+
+.author {
+  margin: 0;
+  grid-area: author;
+}
+
+.publishing {
+  grid-area: publishing;
+  margin: 0;
+}
+
+.publishingYear {
+  grid-area: year;
+  margin: 0;
+}
+
+.annotation {
+  grid-area: annotation;
+}
+
+.pages_count {
+  grid-area: pages;
+  margin: 0;
 }
