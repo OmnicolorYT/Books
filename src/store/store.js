@@ -5,19 +5,19 @@ import {booksReducer} from "./reducers/booksReducers.slice";
 import {modalFormReducer} from "./reducers/modalFormReducers.slice";
 import {uiReducer} from "./reducers/uiReducers.slice";
 
+const persistConfig = {
+    key: 'root',
+    storage: storage,
+    blacklist: ['modalFormReducer']
+}
+
 const rootReducer = combineReducers({
     booksReducer: booksReducer,
     modalFormReducer: modalFormReducer,
     uiReducer: uiReducer
 })
 
-const persistConfig = {
-    key: 'root',
-    storage
-}
-
 const persistedReducer = persistReducer(persistConfig, rootReducer)
-
 
 export const store = createStore(persistedReducer)
 
